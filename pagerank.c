@@ -12,6 +12,7 @@
 #include <math.h>
 #include <getopt.h>
 #include <signal.h>
+#include <assert.h>
 
 // Srtuttura del nodo
 typedef struct Node {
@@ -582,11 +583,11 @@ void *thread_function_graph(void *arg) {
             break; // Termina il thread
         }
 
-        if (arco.src != arco.dest) {
-            pthread_mutex_lock(&pool->g->mutex);
-            addEdge(pool->g, arco.src, arco.dest);
-            pthread_mutex_unlock(&pool->g->mutex);
-        }
+        assert(arco.src != arco.dest);
+        pthread_mutex_lock(&pool->g->mutex);
+        addEdge(pool->g, arco.src, arco.dest);
+        pthread_mutex_unlock(&pool->g->mutex);
+        
         usleep(1);
     }
     return NULL;
@@ -616,10 +617,9 @@ void *produce(void *arg) {
 
     // Inizializzazione del grafo
     initGraph(g, r);
-    int N = r;
 
     // Creazione dell'hashmap per evitare archi duplicati
-    Hashmap *hashmap = createHashMap(N);
+    Hashmap *hashmap = createHashMap(r);
 
     // Lettura degli archi dal file e inserimento nella coda di task
     for (int i = 0; i < n; i++) {
