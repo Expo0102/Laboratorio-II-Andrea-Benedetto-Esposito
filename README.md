@@ -34,6 +34,7 @@ Il server è progettato per ricevere grafi da client, salvare i dati su file tem
 Il client è progettato per inviare grafi al server e ricevere i risultati del calcolo di PageRank. Il client si connette al server tramite un socket TCP e invia i dati del grafo al server. Dopo aver inviato i dati, il client attende i risultati dal server e li stampa a video. 
 - `socket` -> Il client utilizza il modulo `socket` per creare un socket TCP e connettersi al server. Questo permette una comunicazione bidirezionale affidabile.
 - `logging` -> Il client utilizza il modulo `logging` per registrare eventi significativi, come gli errori, in un file di log. Questo aiuta nella manutenzione e nel debugging.
+- `threading` -> Il client utilizza il modulo `threading` per creare un thread per ogni file che legge i dati del grafo da un file e li invia al server.
 
 ## Esecuzione
 Allinterno della cartella è presente un makefile che permette di compilare `pagerank.c` con il comando `make`.
