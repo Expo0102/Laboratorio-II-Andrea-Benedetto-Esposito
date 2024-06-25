@@ -34,7 +34,7 @@ def send_graph_data(filename):
         # Inviare numero di nodi e archi
 
         client_socket.sendall(n.to_bytes(4, byteorder='little'))
-        client_socket.sendall(a.to_bytes(4, byteorder='little')))
+        client_socket.sendall(a.to_bytes(4, byteorder='little'))
         
         # Inviare archi
         
