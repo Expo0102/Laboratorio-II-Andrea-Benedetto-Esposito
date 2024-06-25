@@ -17,7 +17,7 @@ def send_graph_data(filename):
         print(f"{filename} Inizio")
         with open(filename, 'r') as file:
             lines = file.readlines()
-            #ometto i commenti
+            # Ometto i commenti
             while lines[0].startswith("%"):
                 lines.pop(0)
         
@@ -34,8 +34,7 @@ def send_graph_data(filename):
         # Inviare numero di nodi e archi
 
         client_socket.sendall(n.to_bytes(4, byteorder='little'))
-        client_socket.sendall(a.to_bytes(4, byteorder='little'))
-        #client_socket.sendall(f"{n} {a}\n".encode('utf-8'))
+        client_socket.sendall(a.to_bytes(4, byteorder='little')))
         
         # Inviare archi
         
@@ -66,7 +65,8 @@ def main():
     
     files = sys.argv[1:]
     threads = []
-    
+
+    # Per ogni file avvia un thread che iteragisce con il server
     for filename in files:
         thread = threading.Thread(target=send_graph_data, args=(filename,))
         threads.append(thread)
