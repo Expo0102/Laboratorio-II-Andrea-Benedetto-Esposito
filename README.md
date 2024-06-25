@@ -33,20 +33,12 @@ Il server è progettato per ricevere grafi da client, salvare i dati su file tem
 ### Client
 Il client è progettato per inviare grafi al server e ricevere i risultati del calcolo di PageRank. Il client si connette al server tramite un socket TCP e invia i dati del grafo al server. Dopo aver inviato i dati, il client attende i risultati dal server e li stampa a video. 
 - `socket` -> Il client utilizza questo modulo per creare un socket TCP e connettersi al server. Questo permette una comunicazione bidirezionale affidabile.
-- `logging` -> Il client utilizza questo modulo per registrare eventi significativi, come gli errori, in un file di log. Questo aiuta nella manutenzione e nel debugging.
 - `threading` -> Il client utilizza questo modulo per creare un thread per ogni file che legge i dati del grafo dal file stesso e li invia al server.
+- `logging` -> Il client utilizza questo modulo per registrare eventi significativi, come gli errori, in un file di log.
 
 ## Esecuzione
 Allinterno della cartella è presente un makefile che permette di compilare `pagerank.c` con il comando `make`.
 Per eseguire il programma è necessario lanciare il server e il client in due terminali differenti. 
 - `python3 graph_server.py` -> Avvia il server, che si mette in ascolto di connessioni in entrata
 - `python3 graph_client.py file1.mtx file2.mtx ...` -> Avvia il client, che si connette al server e invia i dati del/dei file ".mtx" come argomento.
-- `./pakerank -k [num top] -t [num thread] -m [max iter] -e [max error] -d [bumpind factor] file.mtx`-> Esegue il calcolo del pagerank su un singolo file ".mtx" passato come argomento con i parametri opzionali specificati
-
-
-
-
-
-
-
-  
+- `./pakerank -k [num top] -t [num thread] -m [max iter] -e [max error] -d [bumpind factor] file.mtx`-> Esegue il calcolo del pagerank su un singolo file ".mtx" passato come argomento con i parametri opzionali specificati.
